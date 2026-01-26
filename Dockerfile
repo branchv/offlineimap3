@@ -1,26 +1,18 @@
-FROM python:3 as base
+FROM python:3 AS base
 
-MAINTAINER Ben Yanke <benyanke@gmail.com>
+LABEL maintainer="Ben Yanke <benyanke@gmail.com>"
 
 ##############
 # Main setup stage
 ##############
 
-# Copy in deps first, to improve build caching
-COPY requirements.txt /app-src/requirements.txt
 WORKDIR /app-src
 
-# Get kerberos deps before pip deps can be fetched
-#RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -qq -y krb5-user -y && rm -rf /var/lib/apt/lists/*
-
-# Get latest pip and dependencies
-RUN /usr/local/bin/python3 -m pip install --upgrade pip && pip install -r requirements.txt
-
-# Copy in rest of the code after deps are in place
+# Copy in code
 COPY . /app-src
 
 # Install the app
-RUN /usr/local/bin/python3 setup.py install
+RUN /usr/local/bin/python3 -m pip install --no-cache-dir .
 
 ##############
 # Run tests in a throwaway stage

@@ -14,7 +14,7 @@ authors = [
 license = { text = "GPL-2.0" }
 readme = "README.md"
 keywords = ["client", "imap", "cli", "email", "mail", "synchronization", "sync", "offline"]
-requires-python = ">=3.6"
+requires-python = ">=3.9"
 
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -22,13 +22,12 @@ classifiers = [
     "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     "Operating System :: POSIX",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Programming Language :: Python :: Implementation :: PyPy",
     "Topic :: Office/Business :: Scheduling",
     "Topic :: Utilities"
@@ -40,12 +39,6 @@ documentation = "https://www.offlineimap.org/documentation.html"
 issues = "https://github.com/OfflineIMAP/offlineimap3/issues"
 repository = "https://github.com/OfflineIMAP/offlineimap3/"
 
-[build-system]
-requires = [
-    "setuptools>=18.5",
-    "wheel"
-]
-
 [project.optional-dependencies]
 keyring = ["keyring"]
 cygwin = ["portalocker[cygwin]"]
@@ -54,3 +47,13 @@ testinternet = ["certifi~=2020.6.20"]
 
 [project.scripts]
 offlineimap = "offlineimap.init:main"
+
+[dependency-groups]
+dev = ["pytest", "pytest-cov", "coverage", "codecov"]
+
+[tool.setuptools.packages.find]
+include = ["offlineimap*"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
