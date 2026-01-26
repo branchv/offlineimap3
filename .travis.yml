@@ -50,8 +50,6 @@ before_install:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then pyenv version; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python --version; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python -m pip install -U pip; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then python -m easy_install -U setuptools;
-  fi
 install:
 - pip install --group dev -e .
 - export PATH=$PATH:.
