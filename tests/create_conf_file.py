@@ -24,8 +24,6 @@ additionalfilename = "./test/credentials.conf"  # for the 'pytest' which automat
 sslcacertfile = "/etc/pki/tls/cert.pem" # CentOS 7
 sslcacertfile = "" # TODO: https://gist.github.com/1stvamp/2158128  Current Mac OSX now must download the cacertfile.
 sslcacertfile = "/etc/ssl/certs/ca-certificates.crt" # Ubuntu Trusty 14.04 (Travis linux test container 2018.)
-if os.environ["TRAVIS_OS_NAME"] == "osx":
-  sslcacertfile = os.environ["OSX_BREW_SSLCACERTFILE"]
 
 # lets create that config file.
 cfgfile = open(filename,'w')
